@@ -1,0 +1,31 @@
+<h1>Movie #<%= @profile.id %> details</h1>
+
+<a href="/movies">Go back</a>
+
+<hr>
+
+<dl>
+  <dt>Name</dt>
+  <dd><%= @profile.title %></dd>
+
+  <dt>Year</dt>
+  <dd><%= @profile.year %></dd>
+
+  <dt>Duration</dt>
+  <dd><%= @profile.duration %></dd>
+
+  <dt>Description</dt>
+  <dd><%= @profile.description %></dd>
+
+  <dt>Image</dt>
+  <dd><img src="<%= @profile.image %>" width="200"></dd>
+
+  <dt>Director</dt>
+  <dd> <%= director = Director.where({ :id => @profile.director_id }).first.name %>  </dd>
+
+  <dt>Created at</dt>
+  <dd><%= @profile.created_at %></dd>
+
+  <dt>Updated at</dt>
+  <dd><%= @profile.updated_at %></dd>
+</dl>

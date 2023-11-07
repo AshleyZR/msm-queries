@@ -1,0 +1,56 @@
+<h1>Director #<%= @profile.id %> details</h1>
+
+<a href="/directors">Go back</a>
+
+<hr>
+
+<dl>
+  <dt>Name</dt>
+  <dd><%= @profile.name %></dd>
+
+  <dt>Dob</dt>
+  <dd><%= @profile.dob %></dd>
+
+  <dt>Bio</dt>
+  <dd><%= @profile.bio %></dd>
+
+  <dt>Image</dt>
+  <dd><img src="<%= @profile.image %>" width="200"></dd>
+
+  <dt>Created at</dt>
+  <dd><%= @profile.created_at %></dd>
+
+  <dt>Updated at</dt>
+  <dd><%= @profile.updated_at %></dd>
+</dl>
+
+<h2>Filmography</h2>
+
+<% movies = Movie.where({ :director_id => @profile.id }) %>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th></th>
+  </tr>
+
+  <% movies.each do |a_movie| %>
+    <tr>
+      <td><%= a_movie.id %></td>
+      <td><img src="<%= a_movie.image %>" width="50"></td>
+      <td><%= a_movie.title %></td>
+      <td><%= a_movie.year %></td>
+      <td><%= @profile.name %></td>
+      <td>
+        <a href="/movies/<%= a_movie.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
